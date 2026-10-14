@@ -580,17 +580,5 @@
        Left alone it fetches at the low priority a deferred script should have. -->
   <script type="module" src="/_assets/scripts/main.js"></script>
   
-  <script>
-    // Dev live-reload — removed in production builds
-    (function () {
-      var last = 0;
-      var es = new EventSource('/__reload');
-      es.onmessage = function (e) {
-        var ts = +e.data;
-        if (last && ts !== last) location.reload();
-        last = ts;
-      };
-    })();
-  </script>
 </body>
 </html>

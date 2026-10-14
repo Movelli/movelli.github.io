@@ -13,7 +13,7 @@
  */
 
 /* BUILD_INJECT:CACHE_VERSION */
-const CACHE_VERSION = 'vddf1ac7f09a1';
+const CACHE_VERSION = 'v06cd41749b69';
 /* END_BUILD_INJECT */
 
 const STATIC_CACHE = `movelli-static-${CACHE_VERSION}`;

@@ -979,17 +979,5 @@ function fill(text, ...values) { return String(text).replace(/\{%(\d+)%\}/g, (_,
   })();
 })();
   </script>
-  <script>
-    // Dev live-reload — removed in production builds
-    (function () {
-      var last = 0;
-      var es = new EventSource('/__reload');
-      es.onmessage = function (e) {
-        var ts = +e.data;
-        if (last && ts !== last) location.reload();
-        last = ts;
-      };
-    })();
-  </script>
 </body>
 </html>
