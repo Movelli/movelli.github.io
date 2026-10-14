@@ -62,13 +62,13 @@ const STATIC_EXTS = new Set([
 // `assistant-menu.js`, and no `render/` file at all.
 // [owner 2026-10-14] THE FONT CUTS THE OFFLINE PAGE NEEDS come from the site config (`fonts`, the cuts marked `precache`), filled in by the build like CACHE_VERSION: they were two names typed here.
 /* BUILD_INJECT:FONTS */
-const FONT_URLS = ["/_assets/fonts/poppins-400.woff2","/_assets/fonts/poppins-700.woff2"];
+const FONT_URLS = ["/assets/fonts/poppins-400.woff2","/assets/fonts/poppins-700.woff2"];
 /* END_BUILD_INJECT */
 const PRECACHE_URLS = [
   '/',
-  '/_assets/styles/main.css',
-  '/_assets/icons/sprite.svg',
-  '/_assets/icons/favicon.svg',
+  '/assets/styles/main.css',
+  '/assets/icons/sprite.svg',
+  '/assets/icons/favicon.svg',
   // The shell's own typeface. The offline page uses --font-sans like every other page, so leaving
   // these out would make the one page that MUST work without a network the only one in a fallback.
   // The SERIF is deliberately absent: this list is the SHELL plus the offline page, and that page is
