@@ -1,0 +1,205 @@
+{
+  "demo-page": {
+    "title": "Form",
+    "help": "Everything here is optional unless marked. We read every message, and reply within two working days.",
+    "submitLabel": "Send message",
+    "action": "/api/form",
+    "fields": [
+      {
+        "type": "fieldset",
+        "label": "Your details",
+        "help": "We only use these to reply (see our <a href=\"/privacy/\">Privacy policy</a>).",
+        "required": false
+      },
+      {
+        "isChild": true,
+        "name": "name",
+        "label": "Your name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "isChild": true,
+        "name": "email",
+        "label": "Email",
+        "type": "email",
+        "required": true,
+        "placeholder": "you@example.com",
+        "maxlength": 254
+      },
+      {
+        "isChild": true,
+        "name": "phone",
+        "label": "Phone",
+        "type": "tel",
+        "help": "Only if you'd like us to call you back.",
+        "placeholder": "+31 6 1234 5678",
+        "inputmode": "tel",
+        "pattern": "[+0-9 ()-]{6,20}",
+        "required": false
+      },
+      {
+        "name": "topic",
+        "label": "Topic",
+        "type": "select",
+        "options": [
+          "Correction",
+          "Suggestion",
+          "Partnership",
+          "Other"
+        ],
+        "required": false
+      },
+      {
+        "name": "reply",
+        "label": "How should we reply?",
+        "type": "radio",
+        "help": "We'll only use this for your reply.",
+        "options": [
+          "No preference",
+          "By email",
+          "By phone"
+        ],
+        "required": false
+      },
+      {
+        "name": "interests",
+        "label": "What are you interested in?",
+        "type": "checkbox",
+        "required": true,
+        "options": [
+          "Connectivity",
+          "Money",
+          "Destinations"
+        ]
+      },
+      {
+        "type": "fieldset",
+        "label": "About your trip",
+        "required": false
+      },
+      {
+        "isChild": true,
+        "name": "regions",
+        "label": "Regions you're heading to",
+        "type": "select",
+        "multiple": true,
+        "size": 5,
+        "options": [
+          {
+            "label": "Asia",
+            "options": [
+              "Thailand",
+              "Indonesia",
+              "Vietnam"
+            ]
+          },
+          {
+            "label": "Europe",
+            "options": [
+              "Portugal",
+              "Spain",
+              "Croatia"
+            ]
+          },
+          "Somewhere else"
+        ],
+        "required": false
+      },
+      {
+        "isChild": true,
+        "name": "people",
+        "label": "Number of people",
+        "type": "number",
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "required": false
+      },
+      {
+        "isChild": true,
+        "name": "preferred",
+        "label": "Preferred date & time",
+        "type": "datetime-local",
+        "min": "now",
+        "required": false
+      },
+      {
+        "name": "website",
+        "label": "Your website",
+        "type": "url",
+        "placeholder": "https://example.com",
+        "required": false
+      },
+      {
+        "name": "reference",
+        "label": "Reference",
+        "type": "text",
+        "value": "MOV-2026-0042",
+        "readonly": true,
+        "required": false
+      },
+      {
+        "name": "promo",
+        "label": "Promo code",
+        "type": "text",
+        "placeholder": "No codes are running right now",
+        "disabled": true,
+        "required": false
+      },
+      {
+        "name": "message",
+        "label": "Message",
+        "type": "textarea",
+        "required": true,
+        "rows": 6,
+        "minlength": 10,
+        "maxlength": 2000,
+        "placeholder": "What would you like to tell us?"
+      },
+      {
+        "name": "newsletter",
+        "label": "Email me when a new guide is published",
+        "type": "checkbox",
+        "required": false
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get in touch",
+    "submitLabel": "Send message",
+    "action": "/api/form",
+    "fields": [
+      {
+        "name": "name",
+        "label": "Your name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "email",
+        "label": "Email",
+        "type": "email",
+        "required": true
+      },
+      {
+        "name": "topic",
+        "label": "Topic",
+        "type": "select",
+        "options": [
+          "Correction",
+          "Suggestion",
+          "Partnership",
+          "Other"
+        ],
+        "required": false
+      },
+      {
+        "name": "message",
+        "label": "Message",
+        "type": "textarea",
+        "required": true
+      }
+    ]
+  }
+}

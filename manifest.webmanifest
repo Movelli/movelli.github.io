@@ -1,0 +1,16 @@
+{
+  "name": "Movelli | Digital Nomad Guides, eSIMs & Remote Work Tech",
+  "short_name": "Movelli",
+  "description": "Discover practical guides and comparisons for digital nomads. Compare top eSIMs, VPNs, borderless banking, and nomad insurance on Movelli.",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#222f36",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "categories": ["travel", "lifestyle", "money"],
+  "icons": [{"src":"/_assets/icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},{"src":"/_assets/icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},{"src":"/_assets/icons/icon-maskable-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}],
+  "shortcuts": [{"name":"Demo Category","url":"/categories/demo-category/"},{"name":"Demo Tag","url":"/tags/demo-tag/"},{"name":"Articles","url":"/articles/"}]
+}

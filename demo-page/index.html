@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
+  
+  <link rel="expect" href="#app-header" blocking="render">
+  <style>@view-transition{navigation:auto}</style>
+  <script>(function(){
+var KEY='movelli:vt', BUSY='movelli:vt-busy', live=false;
+addEventListener('click',function(e){
+var a=e.target&&e.target.closest&&e.target.closest('a[href]');
+if(!a||a.target||a.hasAttribute('download')) return;
+if(a.origin&&a.origin!==location.origin) return;
+var card=a.closest('.card');
+var b=(card||a).getBoundingClientRect();
+var box=(b.width&&b.height)?{x:Math.round(b.left),y:Math.round(b.top),w:Math.round(b.width),h:Math.round(b.height)}:null;
+var p={m:card?'grow':'slide'};
+if(box){ p.x=box.x; p.y=box.y; p.w=box.w; p.h=box.h; }
+try{ sessionStorage.setItem(KEY,JSON.stringify(p)); }catch(err){}
+},true);
+function take(k){ try{ var v=sessionStorage.getItem(k); sessionStorage.removeItem(k); return v; }catch(e){ return null; } }
+addEventListener('pageswap',function(){ if(live) try{ sessionStorage.setItem(BUSY,'1'); }catch(e){} });
+addEventListener('pagereveal',function(e){
+var raw=take(KEY), p=raw?JSON.parse(raw):null, busy=take(BUSY);
+if(!e.viewTransition) return;
+if(busy){ try{ e.viewTransition.skipTransition(); }catch(err){} return; }
+live=true;
+e.viewTransition.finished.catch(function(){}).finally(function(){ live=false; });
+var r=document.documentElement, cls;
+if(p&&p.m==='grow'){
+if(p.w&&p.h){
+r.style.setProperty('--vt-from-x',p.x+'px');
+r.style.setProperty('--vt-from-y',p.y+'px');
+r.style.setProperty('--vt-from-w',p.w+'px');
+r.style.setProperty('--vt-from-h',p.h+'px');
+}
+cls='vt-grow';
+}
+if(!cls) return;
+r.classList.add(cls);
+e.viewTransition.finished.catch(function(){}).finally(function(){ r.classList.remove(cls); });
+});
+})();</script>
+  <title>This is a demo page that contains all components | Movelli</title>
+  <meta name="description" content="This is a demo page.">
+  
+  <meta name="theme-color" content="#222f36">
+  <meta name="robots" content="max-image-preview:large">
+  <link rel="canonical" href="https://movelli.com/demo-page/">
+  <link rel="alternate" hreflang="en-US" href="https://movelli.com/demo-page/">
+  <link rel="alternate" hreflang="x-default" href="https://movelli.com/demo-page/">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://movelli.com/demo-page/">
+  <meta property="og:title" content="This is a demo page that contains all components">
+  <meta property="og:description" content="This is a demo page.">
+  <meta property="og:site_name" content="Movelli">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://movelli.com/_assets/media/global-connectivity-for-digital-nomads-1200x675.jpg">
+  <meta property="article:published_time" content="2026-10-07">
+  <meta property="article:modified_time" content="2026-10-07">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@movelli">
+  <meta name="twitter:title" content="This is a demo page that contains all components">
+  <meta name="twitter:description" content="This is a demo page.">
+  <meta name="twitter:image" content="https://movelli.com/_assets/media/global-connectivity-for-digital-nomads-1200x675.jpg">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://movelli.com/#organization",
+      "name": "Movelli",
+      "url": "https://movelli.com/",
+      "logo": "https://movelli.com/_assets/icons/icon-512.png",
+      "sameAs": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://movelli.com/#website",
+      "url": "https://movelli.com/",
+      "name": "Movelli",
+      "description": "Discover practical guides and comparisons for digital nomads. Compare top eSIMs, VPNs, borderless banking, and nomad insurance on Movelli.",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@id": "https://movelli.com/#organization"
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://movelli.com/demo-page/#article",
+      "headline": "This is a demo page that contains all components",
+      "description": "This is a demo page.",
+      "url": "https://movelli.com/demo-page/",
+      "mainEntityOfPage": "https://movelli.com/demo-page/",
+      "isPartOf": {
+        "@id": "https://movelli.com/#website"
+      },
+      "author": {
+        "@id": "https://movelli.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://movelli.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "articleSection": "Demo Category",
+      "keywords": "Demo Tag",
+      "datePublished": "2026-10-07",
+      "dateModified": "2026-10-07",
+      "image": "https://movelli.com/_assets/media/global-connectivity-for-digital-nomads-1200x675.jpg"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://movelli.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Demo Category",
+          "item": "https://movelli.com/categories/demo-category/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "This is a demo page that contains all components",
+          "item": "https://movelli.com/demo-page/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does this page appear in search results?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not once the site is live. This is a demo page for testing only, and it is removed before launch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is there text between the components?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because a component is almost never seen alone. Judging the spacing and the type needs the paragraph above and the heading below, not a component on a blank page."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is an FAQ still worth having?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As a block on a page that earns it, yes. It still feeds AI answer engines and our own structured data, even though Google withdrew FAQ rich results in May 2026."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  
+  <link rel="stylesheet" href="/_assets/styles/main.01fe0b4c.css">
+  <link rel="icon" href="/_assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/_assets/icons/icon-192.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="alternate" type="application/atom+xml" title="Movelli — latest guides" href="/feed.xml">
+  
+  <link rel="preload" href="/_assets/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/_assets/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+<body>
+
+  
+  <noscript><div class="no-js" hidden></div></noscript>
+
+  
+  <div class="app-skip-links"><a id="skip-to-content" href="#main-content">Skip to main content</a><a id="skip-to-navigation" href="#nav-menu">Skip to navigation</a></div>
+
+  
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  
+
+  
+
+  <symbol id="logo-wordmark" viewBox="0 0 106.64 20.8"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M0,10.4A10.4,10.4 0 1,0 20.8,10.4A10.4,10.4 0 1,0 0,10.4ZM1.6,10.4A8.8,8.8 0 1,0 19.2,10.4A8.8,8.8 0 1,0 1.6,10.4Z"/><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M12.263 3.445C9.273 2.644 6.206 4.415 5.405 7.405C4.318 11.462 7.915 19.673 7.915 19.673C7.915 19.673 15.136 14.361 16.223 10.304C17.025 7.313 15.254 4.247 12.263 3.445ZM11.477 6.382C13.012 6.795 13.921 8.375 13.509 9.91C13.096 11.445 11.518 12.356 9.982 11.944C8.446 11.533 7.535 9.955 7.945 8.419C8.355 6.883 9.933 5.97 11.469 6.38L11.477 6.382Z"/><path fill="currentColor" d="M49.94 10.587V17.9H46.79V11.015Q46.79 9.552 46.047 8.776Q45.305 8 44.023 8Q42.74 8 41.986 8.776Q41.233 9.552 41.233 11.015V17.9H38.082V11.015Q38.082 9.552 37.34 8.776Q36.597 8 35.315 8Q34.01 8 33.256 8.776Q32.502 9.552 32.502 11.015V17.9H29.352V5.435H32.502V6.942Q33.11 6.155 34.066 5.705Q35.023 5.255 36.17 5.255Q37.633 5.255 38.78 5.874Q39.928 6.492 40.558 7.64Q41.165 6.56 42.324 5.907Q43.483 5.255 44.832 5.255Q47.127 5.255 48.534 6.661Q49.94 8.067 49.94 10.587ZM51.47 11.667Q51.47 9.755 52.314 8.292Q53.157 6.83 54.62 6.031Q56.082 5.232 57.883 5.232Q59.682 5.232 61.145 6.031Q62.608 6.83 63.451 8.292Q64.295 9.755 64.295 11.667Q64.295 13.58 63.429 15.042Q62.562 16.505 61.089 17.304Q59.615 18.102 57.792 18.102Q55.992 18.102 54.552 17.304Q53.112 16.505 52.291 15.042Q51.47 13.58 51.47 11.667ZM61.055 11.667Q61.055 9.89 60.121 8.934Q59.188 7.977 57.837 7.977Q56.487 7.977 55.576 8.934Q54.665 9.89 54.665 11.667Q54.665 13.445 55.554 14.401Q56.442 15.357 57.792 15.357Q58.648 15.357 59.401 14.941Q60.155 14.525 60.605 13.692Q61.055 12.86 61.055 11.667ZM71.135 14.997 74.285 5.435H77.638L73.025 17.9H69.2L64.61 5.435H67.985ZM90.237 12.612H81.125Q81.237 13.962 82.07 14.727Q82.903 15.492 84.118 15.492Q85.873 15.492 86.615 13.985H90.013Q89.472 15.785 87.942 16.944Q86.412 18.102 84.185 18.102Q82.385 18.102 80.956 17.304Q79.528 16.505 78.729 15.042Q77.93 13.58 77.93 11.667Q77.93 9.732 78.718 8.27Q79.505 6.807 80.922 6.02Q82.34 5.232 84.185 5.232Q85.963 5.232 87.369 5.997Q88.775 6.762 89.551 8.169Q90.328 9.575 90.328 11.397Q90.328 12.072 90.237 12.612ZM87.065 10.497Q87.043 9.282 86.188 8.551Q85.332 7.82 84.095 7.82Q82.925 7.82 82.126 8.529Q81.328 9.237 81.147 10.497ZM95.097 1.25V17.9H91.947V1.25ZM100.677 1.25V17.9H97.527V1.25ZM102.77 2.105Q102.77 1.317 103.321 0.789Q103.872 0.26 104.705 0.26Q105.537 0.26 106.089 0.789Q106.64 1.317 106.64 2.105Q106.64 2.892 106.089 3.421Q105.537 3.95 104.705 3.95Q103.872 3.95 103.321 3.421Q102.77 2.892 102.77 2.105ZM106.257 5.435V17.9H103.107V5.435Z"/></symbol>
+
+
+
+  
+  <symbol id="icon-close" viewBox="0 -960 960 960"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></symbol>
+
+
+  
+  <symbol id="icon-arrow" viewBox="0 -960 960 960"><path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/></symbol>
+
+  
+  <symbol id="icon-arrow-back" viewBox="0 -960 960 960"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></symbol>
+
+  
+  <symbol id="icon-external" viewBox="0 -960 960 960"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></symbol>
+
+  
+  <symbol id="icon-check" viewBox="0 -960 960 960"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></symbol>
+
+  
+  <symbol id="icon-add" viewBox="0 -960 960 960"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></symbol>
+
+  
+  <symbol id="icon-remove" viewBox="0 -960 960 960"><path d="M200-440v-80h560v80H200Z"/></symbol>
+
+
+  
+
+  
+  <symbol id="icon-delete" viewBox="0 -960 960 960"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></symbol>
+
+  
+  <symbol id="icon-more-vert" viewBox="0 -960 960 960"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></symbol>
+
+  
+  <symbol id="icon-reply" viewBox="0 -960 960 960"><path d="M760-200v-160q0-50-35-85t-85-35H273l144 144-57 56-240-240 240-240 57 56-144 144h367q83 0 141.5 58.5T840-360v160h-80Z"/></symbol>
+
+  
+  <symbol id="icon-send" viewBox="0 -960 960 960"><path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"/></symbol>
+
+  
+  <symbol id="icon-prompt-suggestion" viewBox="0 -960 960 960"><path d="m600-200-56-57 143-143H300q-75 0-127.5-52.5T120-580q0-75 52.5-127.5T300-760h20v80h-20q-42 0-71 29t-29 71q0 42 29 71t71 29h387L544-624l56-56 240 240-240 240Z"/></symbol>
+
+</svg>
+
+
+  <header class="app-header" id="app-header">
+      
+      <div class="app-header__start">
+        
+        <button id="nav-back" class="nav-back icon-btn" type="button" title="Back" aria-label="Back" hidden>
+          <svg class="icon" aria-hidden="true"><use href="#icon-arrow-back"/></svg>
+        </button>
+        
+        <a class="brand" href="/" aria-label="Movelli">
+          <svg class="brand__logo" viewBox="0 0 106.64 20.8" aria-hidden="true"><use href="#logo-wordmark"/></svg>
+        </a>
+      </div>
+  </header>
+
+  
+  
+  <movelli-assistant class="js-only" data-available="true">
+    
+    <button class="assistant-button btn" id="assistant-button" type="button" aria-expanded="false" disabled>Assistant<svg class="icon assistant-button__open" aria-hidden="true"><use href="#icon-more-vert"/></svg><svg class="icon assistant-button__close" aria-hidden="true"><use href="#icon-close"/></svg></button>
+
+    
+    
+    <dialog class="assistant-dialog" id="assistant-dialog" aria-labelledby="assistant-dialog-title" tabindex="-1">
+      
+      
+        <h2 id="assistant-dialog-title" class="sr-only">Assistant</h2>
+        
+        <a class="assistant-skip" id="assistant-skip-to-input" href="#assistant-input-field" hidden>Skip to message field</a>
+
+      
+      <div class="chat">
+      <div class="chat__scroll" id="chat-scroll" tabindex="0">
+        
+        <movelli-status-message class="component status-message component-variant--centered chat__empty"><div class="status-message__body component__body"><p>Nothing here yet — ask your question below.</p></div></movelli-status-message>
+        <div class="chat__body content" id="chat-body" aria-live="polite"></div>
+      </div>
+      </div>
+
+      <div class="assistant-controls" id="assistant-controls">
+      
+      <div class="continue-segment" hidden>
+        <div class="continue-segment__body">
+          <span class="continue-segment__text">Re: <span class="continue-segment__title"></span></span>
+          <button type="button" class="continue-segment__dismiss" title="Cancel reply" aria-label="Cancel reply">
+            <svg class="icon" aria-hidden="true"><use href="#icon-close"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="assistant-controls__row">
+        
+        <button class="assistant-menu-button icon-btn" id="assistant-menu-button" type="button"
+                title="Open assistant menu" aria-label="Open assistant menu"
+                aria-expanded="false" aria-controls="assistant-menu">
+          <svg class="icon" aria-hidden="true"><use href="#icon-more-vert"/></svg>
+        </button>
+        <search class="assistant-input" aria-label="Assistant input">
+        <form class="assistant-input__body" action="/ask" method="get">
+        
+        <label class="sr-only" for="assistant-input-field">Your message</label>
+        <textarea id="assistant-input-field" class="assistant-input__field" name="query" rows="1"
+                  placeholder="Your message"
+                  autocomplete="off" enterkeyhint="enter"></textarea>
+        
+        <span id="assistant-input-enter-hint" hidden>Press Enter to send</span>
+        <span id="assistant-input-escape-hint" hidden>Press Escape to close</span>
+        
+        <button class="assistant-input__submit icon-btn" type="submit" title="Send your message" aria-label="Send your message">
+          <svg class="icon" aria-hidden="true"><use href="#icon-send"/></svg>
+        </button>
+      </form>
+        </search>
+      </div>
+    </div>
+
+      
+      <dialog class="assistant-menu" id="assistant-menu" aria-label="Assistant menu" tabindex="-1">
+          
+          <button class="assistant-menu__close icon-btn" type="button"
+                  title="Close assistant menu" aria-label="Close assistant menu">
+            <svg class="icon" aria-hidden="true"><use href="#icon-close"/></svg>
+          </button>
+        
+        <div class="assistant-menu__scroll">
+        <div class="assistant-menu__body">
+          
+          <section class="chat-history">
+            
+            <p id="chat-history-title" class="chat-history__title">Chat history</p>
+            <ol class="chat-history__list" id="chat-history-list" aria-labelledby="chat-history-title"></ol>
+            
+            <movelli-status-message class="component status-message chat-history__empty"><div class="status-message__body component__body"><p>No chat history yet.</p></div></movelli-status-message>
+            
+            <div class="chat-history__clear">
+              <button class="chat-clear-history" id="chat-clear-history" type="button">
+                <svg class="icon" aria-hidden="true"><use href="#icon-delete"/></svg>
+                <span>Clear chat history</span>
+              </button>
+            </div>
+          </section>
+        </div>
+        </div>
+      </dialog>
+
+      
+      <div class="assistant-toast" id="assistant-toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    </dialog>
+
+  </movelli-assistant>
+  <script>addEventListener('load',()=>{import('/_assets/scripts/assistant.caddbf2e.js')});</script>
+
+
+  
+  <div class="app-view-container app-view-container--page">
+  <main id="main-content" class="main-content" tabindex="-1">
+    
+    <div class="page-container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol class="breadcrumbs__list"><li class="breadcrumbs__item"><a href="/">Home</a></li><li class="breadcrumbs__item"><a href="/categories/demo-category/">Demo Category</a></li><li class="breadcrumbs__item"><span aria-current="page">This is a demo page that contains all components</span></li></ol>
+    </nav>
+    <article data-page class="page" data-title="This is a demo page that contains all components" data-url="/demo-page/" data-category="demo-category" data-proactive="/_assets/proactive/demo-page.json">
+    <movelli-wide class="layout wide"><div class="wide__body">
+      <div class="wide__a">
+        <movelli-banner class="component banner component-variant--wide">
+    <div class="banner__body component__body">
+    <picture class="banner__picture">
+      <source media="(min-width: 36rem)" srcset="/_assets/media/global-connectivity-for-digital-nomads-576x252.webp 576w, /_assets/media/global-connectivity-for-digital-nomads-784x343.webp 784w, /_assets/media/global-connectivity-for-digital-nomads-1152x504.webp 1152w, /_assets/media/global-connectivity-for-digital-nomads-1280x560.webp 1280w, /_assets/media/global-connectivity-for-digital-nomads-1568x686.webp 1568w, /_assets/media/global-connectivity-for-digital-nomads-2400x1050.webp 2400w" sizes="(min-width: 84rem) 80rem, (min-width: 75.0625rem) calc(100vw - 4rem), (min-width: 39.0625rem) calc(100vw - 3rem), (min-width: 36rem) calc(100vw - 2rem)" width="1568" height="686">
+      <img class="banner__img" src="/_assets/media/global-connectivity-for-digital-nomads-1088x816.webp" srcset="/_assets/media/global-connectivity-for-digital-nomads-296x222.webp 296w, /_assets/media/global-connectivity-for-digital-nomads-376x282.webp 376w, /_assets/media/global-connectivity-for-digital-nomads-592x444.webp 592w, /_assets/media/global-connectivity-for-digital-nomads-752x564.webp 752w, /_assets/media/global-connectivity-for-digital-nomads-1088x816.webp 1088w" sizes="(min-width: 26.0625rem) calc(100vw - 2rem), calc(100vw - 1.5rem)" width="1088" height="816" alt="A woman seen from behind working at a laptop at a table on a sunny terrace, with a garden and a swimming pool behind her" loading="eager" fetchpriority="high" decoding="async">
+    </picture>
+    <span class="banner__credit">Photo: <a href="https://unsplash.com/@ethnoza" target="_blank" rel="noopener noreferrer">Aleh Tsikhanau<span class="sr-only">&nbsp;(opens in a new tab)</span></a></span>
+    </div>
+  </movelli-banner>
+      </div>
+    </div></movelli-wide>
+    <movelli-page-head class="layout page-head"><div class="page-head__body">
+      <div class="page-head__a">
+        <movelli-page-title class="component page-title"><div class="page-title__body component__body">
+    <p class="page-title__eyebrow"><a class="page-title__category" href="/categories/demo-category/">Demo Category</a></p>
+    <h1>This is a demo page that contains all components</h1>
+  </div></movelli-page-title>
+      </div>
+      <div class="page-head__b">
+        <movelli-byline class="component byline"><p class="byline__body component__body"><span>Updated <time datetime="2026-10-07">7 October 2026</time></span><span class="byline__separator" aria-hidden="true">|</span><span class="byline__tags"><a class="byline__tag" href="/tags/demo-tag/">Demo Tag</a></span></p></movelli-byline>
+      </div>
+      <div class="page-head__c">
+        <movelli-prose class="component prose component-variant--standfirst"><div class="prose__body component__body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit.</p></div></movelli-prose>
+        <movelli-note class="component note"><div class="note__body component__body"><p>We may earn a commission if you buy through certain links. See our <a href="/disclosure/">affiliate disclosure</a>.</p></div></movelli-note>
+      </div>
+      <div class="page-head__d">
+        <movelli-toc class="component toc"><nav class="toc__body component__body" aria-labelledby="toc-title">
+      <div class="toc__content">
+        <h2 id="toc-title" class="toc__title">On this page</h2>
+        <ol class="toc__list">
+          <li><a href="#text">Text</a></li>
+        <li><a href="#notices">Notices</a></li>
+        <li><a href="#buttons">Buttons</a></li>
+        <li><a href="#cards">Cards</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#tables">Tables</a></li>
+        <li><a href="#form">Form</a></li>
+        <li><a href="#images-and-video">Images and video</a></li>
+        <li><a href="#banners">Banners</a></li>
+        <li><a href="#layouts">Layouts</a></li>
+        </ol>
+      </div>
+    </nav></movelli-toc>
+      </div>
+    </div></movelli-page-head>
+    <movelli-one-column class="layout one-column"><div class="one-column__body">
+      <div class="one-column__a">
+        <movelli-prose class="component prose"><div class="prose__body component__body"><p>Most people only think about mobile data when it has already stopped working: the plane lands, the phone finds a network it does not recognise, and a message appears about roaming charges. A little planning before the trip turns that moment into a non-event. This guide walks through the choices in the order you will actually meet them, from the phone in your pocket to the first morning in a new country.</p><h2 id="text">Text</h2><p>The first thing to find out is whether your phone can use an eSIM at all. Most phones sold in the last four years can, but carrier-locked models often cannot take a second plan until the lock is removed. Open the settings, look for a line called the EID or a mention of a digital SIM, and write down what you find while you still have a connection.</p><p>The second thing is the lock itself. A phone bought on a monthly plan is frequently tied to the carrier that sold it, and unlocking can take a few days. Request it early, because a request made at the airport will not be answered before you board.</p><h3>Unlocked, locked and in between</h3><p>A fully unlocked phone accepts any SIM or eSIM from any provider, which is what you want. A locked phone only accepts the carrier that sold it, and some carriers unlock automatically once the device is paid off. If you are unsure, the quickest test is to put in a SIM from another network and see whether it is recognised.</p><p>Phones bought abroad add a further wrinkle, because the radio bands can differ between regions. A model sold in North America may miss a band that is common in Europe or Asia, so coverage can be thinner than the map suggests. The manufacturer's specification page lists the bands, and a provider's coverage page lists the ones it uses.</p><h4>What the settings screen tells you</h4><p>On most phones the relevant information sits under a menu named for the network, the SIM or the general device information. Look for a line saying the phone is unlocked or that there are no restrictions on the SIM. If the wording is vague, a screenshot of the screen is enough for a provider's support team to answer.</p><p>It also helps to note the model number and the software version while you are there. Providers occasionally ask for both, and the answer decides whether a plan can be installed at all. Keep the screenshot in a place you can open without a connection.</p><h5>Small details that save a support call</h5><p>Write the order number and the email address you used on a card or a note that is not stored on the phone. If the phone is the thing that fails, you will want that information somewhere else. A paper copy in the passport sleeve costs nothing and has rescued many a first evening.</p><p>Do the same for the plan's activation details, such as the code or the address you were sent. Some providers send them once and never again, so a lost message can mean a new purchase. Take a photo of the screen as soon as it appears.</p><h6>One last thing before you leave the house</h6><p>Turn off automatic updates for apps while you are on a metered plan, and download the maps and the tickets you will need for the first day. The phone will then behave itself on its first hour abroad, and you can spend that hour looking around instead of watching a progress bar.</p></div></movelli-prose>
+        <movelli-prose class="component prose component-variant--smaller"><div class="prose__body component__body"><p>A prose with the <code>smaller</code> variant: a step under the reading size. It is the size of the conversation in the chat, where the assistant gives it to every answer it adds. On a page it is only here, to be looked at.</p></div></movelli-prose>
+        <movelli-prose class="component prose"><div class="prose__body component__body"><p>One paragraph carrying every inline style at once, so they can be compared in the same line of text: some <strong>bold text</strong>, a little <em>italic text</em>, a span of <u>underlined text</u>, a <s>struck-through</s> correction, a <a href="/about/">link to another page</a>, a <a href="#cards">link to a section of this page</a> (an <code>id</code> written in the content), a <a href="https://example.com/visa-information" target="_blank" rel="noopener noreferrer">link to another website<svg class="icon icon--inline" aria-hidden="true"><use href="#icon-external"/></svg><span class="sr-only">&nbsp;(opens in a new tab)</span></a> (any address that leaves the site gets the icon and opens in a new tab), a <a href="https://example.com/demo-sponsor" target="_blank" rel="sponsored noopener noreferrer">link to a sponsor<svg class="icon icon--inline" aria-hidden="true"><use href="#icon-external"/></svg><span class="sr-only">&nbsp;(opens in a new tab)</span></a> (sponsored, with the same icon), a <a href="https://www.airalo.com/" target="_blank" rel="noopener noreferrer">link to a potential sponsor<svg class="icon icon--inline" aria-hidden="true"><use href="#icon-external"/></svg><span class="sr-only">&nbsp;(opens in a new tab)</span></a> (a plain link until the programme accepts the site), a footnote<sup><a href="#note-1" id="ref-1" role="doc-noteref">1</a></sup> (the number, the list at the foot of the page and the arrow back are made by the build), a bit of <code>inline code</code>, the raised and lowered forms in 30 m<sup>2</sup> and CO<sub>2</sub>, the title of a work in <cite>The Movelli Handbook</cite>, and a piece of <small>small print</small> at the end.</p><p>A hard line break is for a break that is part of the content itself, the way an address or a line of verse needs one:<br>this sentence continues on a new line without starting a new paragraph.</p><p>An unordered list, for things with no order:</p><ul><li>An eSIM is a SIM card built into the phone.</li><li>A local SIM is a piece of plastic you have to go and buy.</li><li>Roaming is what happens when you do neither.</li></ul><p>And an ordered list, for things that happen in sequence:</p><ol><li>Check the phone is unlocked and eSIM-capable.</li><li>Buy the plan before you fly.</li><li>Install it on the ground, on hotel wifi.</li></ol></div></movelli-prose>
+        <movelli-quote class="component quote"><figure class="quote__body component__body">
+    <blockquote class="quote__text" cite="https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element"><p>A pull quote is for one sentence worth slowing down for: a source speaking, or the single line that carries the argument.</p></blockquote>
+    <figcaption class="quote__attribution">A placeholder attribution, with a <a href="/about/">link</a> and the title of a work in <cite>The Movelli Handbook</cite></figcaption>
+  </figure></movelli-quote>
+        <movelli-prose class="component prose"><div class="prose__body component__body"><p>A code block shows code or markup as data: its content is escaped, never rendered.</p></div></movelli-prose>
+        <movelli-code-block class="component code-block"><div class="code-block__body component__body">
+    <p class="code-block__label">What a figure renders</p>
+    <pre><code>&lt;figure class=&quot;figure&quot;&gt;
+  &lt;img src=&quot;/_assets/media/cover-1200.webp&quot; width=&quot;1200&quot; height=&quot;1500&quot; alt=&quot;…&quot;&gt;
+  &lt;figcaption&gt;A caption and its credit&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+  </div></movelli-code-block>
+      </div>
+    </div></movelli-one-column>
+    <movelli-one-column class="layout one-column"><div class="one-column__body">
+      <div class="one-column__a">
+        <movelli-prose class="component prose"><div class="prose__body component__body"><h2 id="notices">Notices</h2></div></movelli-prose>
+        <movelli-prose class="component prose"><div class="prose__body component__body"><p>An intro is the line under a page title that says what the page lists (the sentence that finishes the heading), on a listing, an archive or a category. It is page furniture rather than reading text, so it keeps the interface face and the body size while everything you are reading here is set in the serif. The one below is the real thing, out of its usual place.</p></div></movelli-prose>
+        <movelli-intro class="component intro"><div class="intro__body component__body"><p>Practical guides for connectivity and money on the move.</p></div></movelli-intro>
+        <movelli-prose class="component prose"><div class="prose__body component__body"><p>A status message is the <em>system</em> speaking, not the page and not the AI. The page was not found, there is no connection, the assistant cannot be reached. It takes the reading size at full ink because it is usually the only thing left on the surface, which is what separates it from the small italic note under this page’s header.</p></div></movelli-prose>
+        <movelli-status-message class="component status-message"><div class="status-message__body component__body"><p>This one is a demonstration. The real ones say the page was not found, or that there is no connection.</p></div></movelli-status-message>
+        <movelli-prose class="component prose"><div class="prose__body component__body"><p>A note is a small aside beside the content you came for, such as a disclosure or a hint.</p></div></movelli-prose>
+        <movelli-note class="component note"><div class="note__body component__body"><p>A demonstration note, in the notes type.</p></div></movelli-note>
+        <movelli-callout class="component callout"><aside class="callout__body component__body"><h2 class="component__title" id="check-coverage-price-before-you-buy">Check coverage &amp; price before you buy</h2><p>A callout is for a caveat the reader would regret skipping, such as a prerequisite, a common mistake or a deadline. It takes a title and a short body, and nothing else, so it cannot quietly grow into a second article.</p></aside></movelli-callout>
+      </div>
+    </div></movelli-one-column>
+    <movelli-one-column class="layout one-column"><div class="one-column__body">
+      <div class="one-column__a">
+        <movelli-prose class="component prose"><div class="prose__body component__body"><h2 id="buttons">Buttons</h2><p>Two looks, one component. The primary button is the default and the page's single most important action; <code>isPrimary: false</code> gives the secondary look, for everything else. An external link picks up its own icon and a new-tab warning for screen readers.</p></div></movelli-prose>
+        <movelli-cta class="component cta"><a class="btn" href="/demo-page/">Primary action</a></movelli-cta>
+        <movelli-cta class="component cta"><a class="btn btn--secondary" href="/about/">Secondary action</a></movelli-cta>
+        <movelli-cta class="component cta"><a class="btn" href="https://example.com/offer" target="_blank" rel="sponsored noopener noreferrer">An affiliate link &amp; disclosure <svg class="icon" aria-hidden="true"><use href="#icon-external"/></svg><span class="sr-only">&nbsp;(opens in a new tab)</span></a></movelli-cta>
+        <movelli-cta class="component cta"><a class="btn" href="https://example.com/demo-sponsor" target="_blank" rel="sponsored noopener noreferrer">Demo Sponsor, a link from the sponsor library <svg class="icon" aria-hidden="true"><use href="#icon-external"/></svg><span class="sr-only">&nbsp;(opens in a new tab)</span></a></movelli-cta>
+        <movelli-cta class="component cta"><button type="button" class="btn">Primary, as a button</button></movelli-cta>
+        <movelli-cta class="component cta"><button type="button" class="btn btn--secondary">Secondary, as a button</button></movelli-cta>
+        <movelli-cta class="component cta"><button type="button" class="btn" disabled>Primary, disabled</button></movelli-cta>
+        <movelli-cta class="component cta"><button type="button" class="btn btn--secondary" disabled>Secondary, disabled</button></movelli-cta>
+      </div>
+    </div></movelli-one-column>
+    <movelli-one-column class="layout one-column"><div class="one-column__body">
+      <div class="one-column__a">
+        <movelli-prose class="component prose"><div class="prose__body component__body"><p>A button row puts buttons that belong together side by side, from the left, and wraps them onto the next row where there is no room. Each button keeps the width of its own words.</p></div></movelli-prose>
+      </div>
+    </div></movelli-one-column>
+    <movelli-button-row class="layout button-row"><div class="button-row__body">
+      <div class="button-row__a">
+        <movelli-cta class="component cta"><a class="btn" href="/demo-page/">Primary action</a></movelli-cta>
+        <movelli-cta class="component cta"><a class="btn btn--secondary" href="/about/">Secondary action</a></movelli-cta>
+        <movelli-cta class="component cta"><a class="btn btn--secondary" href="/articles/">A third, longer button to show the wrapping</a></movelli-cta>
+      </div>
+    </div></movelli-button-row>
+    <movelli-card-grid class="layout card-grid"><div class="card-grid__body">
+      <div class="card-grid__a">
+        <movelli-heading class="component heading"><h2 class="heading__body component__title" id="cards">Cards</h2></movelli-heading>
+      </div>
+      <div class="card-grid__b" role="list">
+        <movelli-card class="component card" role="listitem">
+      <a class="card__body component__body" href="/demo-page/">
+        <span class="card__thumb" aria-hidden="true">
+          <img class="card__img" src="/_assets/media/global-connectivity-for-digital-nomads-760x428.webp" srcset="/_assets/media/global-connectivity-for-digital-nomads-184x104.webp 184w, /_assets/media/global-connectivity-for-digital-nomads-380x214.webp 380w, /_assets/media/global-connectivity-for-digital-nomads-600x338.webp 600w, /_assets/media/global-connectivity-for-digital-nomads-672x378.webp 672w, /_assets/media/global-connectivity-for-digital-nomads-760x428.webp 760w" sizes="auto, (min-width: 62.25rem) 18.75rem, (min-width: 53.0625rem) calc(33.3333vw - 2rem), (min-width: 39.0625rem) calc(50vw - 2.25rem), (min-width: 26.0625rem) calc(50vw - 1.5rem), (min-width: 23.5625rem) calc(50vw - 1rem), calc(100vw - 1.5rem)" width="760" height="428" alt="" loading="lazy" decoding="async"><span class="card__tag">Demo Category</span>
+        </span>
+        <span class="card__text">
+          <span class="card__title is-underlined">This is a demo page that contains all components</span>
+          <span class="card__summary">This is a demo page.</span>
+        </span>
+      </a>
+    </movelli-card>
+        <movelli-card class="component card" role="listitem">
+      <a class="card__body component__body" href="/about/">
+        <span class="card__thumb" aria-hidden="true">
+          <img class="card__img" src="/_assets/media/global-connectivity-for-digital-nomads-760x428.webp" srcset="/_assets/media/global-connectivity-for-digital-nomads-184x104.webp 184w, /_assets/media/global-connectivity-for-digital-nomads-380x214.webp 380w, /_assets/media/global-connectivity-for-digital-nomads-600x338.webp 600w, /_assets/media/global-connectivity-for-digital-nomads-672x378.webp 672w, /_assets/media/global-connectivity-for-digital-nomads-760x428.webp 760w" sizes="auto, (min-width: 62.25rem) 18.75rem, (min-width: 53.0625rem) calc(33.3333vw - 2rem), (min-width: 39.0625rem) calc(50vw - 2.25rem), (min-width: 26.0625rem) calc(50vw - 1.5rem), (min-width: 23.5625rem) calc(50vw - 1rem), calc(100vw - 1.5rem)" width="760" height="428" alt="" loading="lazy" decoding="async"><span class="card__tag">About</span>
+        </span>
+        <span class="card__text">
+          <span class="card__title is-underlined">About</span>
+          <span class="card__summary">Who is behind Movelli, and how to get in touch.</span>
+        </span>
+      </a>
+    </movelli-card>
+        <movelli-card class="component card" role="listitem">
+      <a class="card__body component__body" href="/articles/">
+        <span class="card__thumb" aria-hidden="true">
+          <img class="card__img" src="/_assets/media/global-connectivity-for-digital-nomads-760x428.webp" srcset="/_assets/media/global-connectivity-for-digital-nomads-184x104.webp 184w, /_assets/media/global-connectivity-for-digital-nomads-380x214.webp 380w, /_assets/media/global-connectivity-for-digital-nomads-600x338.webp 600w, /_assets/media/global-connectivity-for-digital-nomads-672x378.webp 672w, /_assets/media/global-connectivity-for-digital-nomads-760x428.webp 760w" sizes="auto, (min-width: 62.25rem) 18.75rem, (min-width: 53.0625rem) calc(33.3333vw - 2rem), (min-width: 39.0625rem) calc(50vw - 2.25rem), (min-width: 26.0625rem) calc(50vw - 1.5rem), (min-width: 23.5625rem) calc(50vw - 1rem), calc(100vw - 1.5rem)" width="760" height="428" alt="" loading="lazy" decoding="async"><span class="card__tag">Archive</span>
+        </span>
+        <span class="card__text">
+          <span class="card__title is-underlined">Articles</span>
+          <span class="card__summary">This is the articles archive.</span>
+        </span>
+      </a>
+    </movelli-card>
+        <movelli-card class="component card component-variant--no-thumb" role="listitem">
+      <a class="card__body component__body" href="/about/">
+        <span class="card__text">
+          <span class="card__title is-underlined">A card with the no-thumb variant</span>
+          <span class="card__summary">No thumbnail block at all: the card the assistant shows for a search result, which has no image of its own.</span>
+        </span>
+      </a>
+    </movelli-card>
+      </div>
+      <div class="card-grid__c">
+        <movelli-more-link class="component more-link"><a class="more-link__body component__body" href="/articles/">View all articles<svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a></movelli-more-link>
+      </div>
+    </div></movelli-card-grid>
+    <movelli-one-column class="layout one-column"><div class="one-column__body">
+      <div class="one-column__a">
+        <movelli-prose class="component prose"><div class="prose__body component__body"><p>A <strong>slider</strong> is for more cards than a card grid shows at once. It is a layout of its own. Its first card starts on the left edge of the reading width and the rest run on to the screen edge; scrolling carries them to the near edge.</p></div></movelli-prose>
+      </div>
+    </div></movelli-one-column>
+    <movelli-slider class="layout slider"><div class="slider__body">
+      <div class="slider__b" role="list">
+        <movelli-card class="component card" role="listitem">
+      <a class="card__body component__body" href="/demo-page/">
+        <span class="card__thumb" aria-hidden="true">
+          <img class="card__img" src="/_assets/media/global-connectivity-for-digital-nomads-544x306.webp" srcset="/_assets/media/global-connectivity-for-digital-nomads-240x135.webp 240w, /_assets/media/global-connectivity-for-digital-nomads-272x153.webp 272w, /_assets/media/global-connectivity-for-digital-nomads-480x270.webp 480w, /_assets/media/global-connectivity-for-digital-nomads-544x306.webp 544w" sizes="auto, (min-width: 22.75rem) 17rem, (min-width: 20.25rem) calc(80vw - 1.2rem), 15rem" width="544" height="306" alt="" loading="lazy" decoding="async"><span class="card__tag">Demo Category</span>
+        </span>
+        <span class="card__text">
+          <span class="card__title is-underlined">This is a demo page that contains all components</span>
+          <span class="card__summary">This is a demo page.</span>
+        </span>
+      </a>
+    </movelli-card>
+        <movelli-card class="component card" role="listitem">
+      <a class="card__body component__body" href="/about/">
+        <span class="card__thumb" aria-hidden="true">
+          <img class="card__img" src="/_assets/media/global-connectivity-for-digital-nomads-544x306.webp" srcset="/_assets/media/global-connectivity-for-digital-nomads-240x135.webp 240w, /_assets/media/global-connectivity-for-digital-nomads-272x153.webp 272w, /_assets/media/global-connectivity-for-digital-nomads-480x270.webp 480w, /_assets/media/global-connectivity-for-digital-nomads-544x306.webp 544w" sizes="auto, (min-width: 22.75rem) 17rem, (min-width: 20.25rem) calc(80vw - 1.2rem), 15rem" width="544" height="306" alt="" loading="lazy" decoding="async"><span class="card__tag">About</span>
+        </span>
+        <span class="card__text">
+          <span class="card__title is-underlined">About</span>
+          <span class="card__summary">Who is behind Movelli, and how to get in touch.</span>
+        </span>
+      </a>
+    </movelli-card>
+        <movelli-card class="component card" role="listitem">
+      <a class="card__body component__body" href="/articles/">
+        <span class="card__thumb" aria-hidden="true">
+          <img class="card__img" src="/_assets/media/global-connectivity-for-digital-nomads-544x306.webp" srcset="/_assets/media/global-connectivity-for-digital-nomads-240x135.webp 240w, /_assets/media/global-connectivity-for-digital-nomads-272x153.webp 272w, /_assets/media/global-connectivity-for-digital-nomads-480x270.webp 480w, /_assets/media/global-connectivity-for-digital-nomads-544x306.webp 544w" sizes="auto, (min-width: 22.75rem) 17rem, (min-width: 20.25rem) calc(80vw - 1.2rem), 15rem" width="544" height="306" alt="" loading="lazy" decoding="async"><span class="card__tag">Archive</span>
+        </span>
+        <span class="card__text">
+          <span class="card__title is-underlined">Articles</span>
+          <span class="card__summary">This is the articles archive.</span>
+        </span>
+      </a>
+    </movelli-card>
+        <movelli-card class="component card" role="listitem">
+      <a class="card__body component__body" href="/categories/demo-category/">
+        <span class="card__thumb" aria-hidden="true">
+          <img class="card__img" src="/_assets/media/global-connectivity-for-digital-nomads-544x306.webp" srcset="/_assets/media/global-connectivity-for-digital-nomads-240x135.webp 240w, /_assets/media/global-connectivity-for-digital-nomads-272x153.webp 272w, /_assets/media/global-connectivity-for-digital-nomads-480x270.webp 480w, /_assets/media/global-connectivity-for-digital-nomads-544x306.webp 544w" sizes="auto, (min-width: 22.75rem) 17rem, (min-width: 20.25rem) calc(80vw - 1.2rem), 15rem" width="544" height="306" alt="" loading="lazy" decoding="async"><span class="card__tag">Category</span>
+        </span>
+        <span class="card__text">
+          <span class="card__title is-underlined">Demo Category</span>
+          <span class="card__summary">This is a demo category</span>
+        </span>
+      </a>
+    </movelli-card>
+        <movelli-card class="component card" role="listitem">
+      <a class="card__body component__body" href="/tags/demo-tag/">
+        <span class="card__thumb" aria-hidden="true">
+          <img class="card__img" src="/_assets/media/global-connectivity-for-digital-nomads-544x306.webp" srcset="/_assets/media/global-connectivity-for-digital-nomads-240x135.webp 240w, /_assets/media/global-connectivity-for-digital-nomads-272x153.webp 272w, /_assets/media/global-connectivity-for-digital-nomads-480x270.webp 480w, /_assets/media/global-connectivity-for-digital-nomads-544x306.webp 544w" sizes="auto, (min-width: 22.75rem) 17rem, (min-width: 20.25rem) calc(80vw - 1.2rem), 15rem" width="544" height="306" alt="" loading="lazy" decoding="async"><span class="card__tag">Tag</span>
+        </span>
+        <span class="card__text">
+          <span class="card__title is-underlined">Demo Tag</span>
+          <span class="card__summary">This is a demo tag</span>
+        </span>
+      </a>
+    </movelli-card>
+      </div>
+    </div></movelli-slider>
+    <movelli-one-column class="layout one-column"><div class="one-column__body">
+      <div class="one-column__a">
+        <movelli-faq class="component faq">
+    <h2 class="component__title" id="faq">FAQ</h2>
+    <div class="faq__body component__body">
+    <details name="faq"><summary>Does this page appear in search results?<svg class="icon faq__marker" aria-hidden="true"><use class="faq__more" href="#icon-add"/><use class="faq__less" href="#icon-remove"/></svg></summary><p>Not once the site is live. This is a demo page for testing only, and it is removed before launch.</p></details>
+    <details name="faq"><summary>Why is there text between the components?<svg class="icon faq__marker" aria-hidden="true"><use class="faq__more" href="#icon-add"/><use class="faq__less" href="#icon-remove"/></svg></summary><p>Because a component is almost never seen alone. Judging the spacing and the type needs the paragraph above and the heading below, not a component on a blank page.</p></details>
+    <details name="faq"><summary>Is an FAQ still worth having?<svg class="icon faq__marker" aria-hidden="true"><use class="faq__more" href="#icon-add"/><use class="faq__less" href="#icon-remove"/></svg></summary><p>As a block on a page that earns it, yes. It still feeds AI answer engines and our own structured data, even though Google withdrew FAQ rich results in May 2026.</p></details>
+  </div></movelli-faq>
+      </div>
+    </div></movelli-one-column>
+    <movelli-one-column class="layout one-column"><div class="one-column__body">
+      <div class="one-column__a">
+        <movelli-prose class="component prose"><div class="prose__body component__body"><h2 id="tables">Tables</h2>
+<p>Three different table components, because they answer three different questions. A comparison is a matrix; an overview is label and value; a property list is a thing's own facts.</p></div></movelli-prose>
+        <movelli-comparison-table class="component comparison-table">
+    <div class="comparison-table__body component__body" tabindex="0"><table class="comparison-table__table"><caption>Three providers, side by side<span class="comparison-table__subtitle">A subtitle under the caption, smaller and in the secondary colour</span></caption><thead><tr><th scope="col">Feature</th><th scope="col">Airalo</th><th scope="col">Holafly</th><th scope="col">Saily</th></tr></thead><tbody><tr><th scope="row">Coverage</th><td>200+ countries</td><td>160+ countries</td><td>150+ countries</td></tr><tr><th scope="row">Plan type</th><td>Data buckets</td><td>Unlimited (data &amp; tethering)</td><td>Data buckets</td></tr><tr><th scope="row">Hotspot</th><td>Yes</td><td>No</td><td>Yes</td></tr></tbody></table></div>
+    <p class="comparison-table__note">A footnote belongs to the table &amp; travels with it. <span class="comparison-table__credit">Source: Movelli Lab</span></p>
+  </movelli-comparison-table>
+        <movelli-overview-table class="component overview-table"><div class="overview-table__body component__body"><table class="overview-table__table" role="table"><caption>At a glance</caption>
+      <tbody role="rowgroup">
+        <tr role="row"><th scope="row" role="rowheader">Time zone</th><td role="cell">UTC+8</td></tr>
+        <tr role="row"><th scope="row" role="rowheader">Plug type</th><td role="cell">Type C, Type F</td></tr>
+        <tr role="row"><th scope="row" role="rowheader">Official portal</th><td role="cell"><a href="https://example.com" target="_blank" rel="noopener noreferrer">Immigration department<svg class="icon icon--inline" aria-hidden="true"><use href="#icon-external"/></svg><span class="sr-only">&nbsp;(opens in a new tab)</span></a></td></tr>
+        <tr role="row"><th scope="row" role="rowheader">Currency</th><td role="cell">Indonesian rupiah (IDR)</td></tr>
+        <tr role="row"><th scope="row" role="rowheader">How people pay</th><td role="cell">Cash outside the cities; QR codes almost everywhere in them.</td></tr>
+        <tr role="row"><th scope="row" role="rowheader">Networks</th><td role="cell">Telkomsel, Indosat &amp; XL Axiata</td></tr>
+        <tr role="row"><th scope="row" role="rowheader">eSIM support</th><td role="cell">Widely available</td></tr>
+      </tbody>
+    </table></div></movelli-overview-table>
+        <movelli-overview-table class="component overview-table component-variant--inline"><div class="overview-table__body component__body"><table class="overview-table__table" role="table"><caption>The inline variant<span class="overview-table__subtitle">Each label and its value on one row, at any width</span></caption>
+      <tbody role="rowgroup">
+        <tr role="row"><th scope="row" role="rowheader">Time zone</th><td role="cell">UTC+8</td></tr>
+        <tr role="row"><th scope="row" role="rowheader">Plug type</th><td role="cell">Type C, Type F</td></tr>
+        <tr role="row"><th scope="row" role="rowheader">Official portal</th><td role="cell"><a href="https://example.com" target="_blank" rel="noopener noreferrer">Immigration department<svg class="icon icon--inline" aria-hidden="true"><use href="#icon-external"/></svg><span class="sr-only">&nbsp;(opens in a new tab)</span></a></td></tr>
+      </tbody>
+    </table></div></movelli-overview-table>
+        <movelli-props class="component props"><dl class="props__body component__body">
+      <div class="props__row">
+        <dt>Starting price</dt>
+        <dd>$4.50</dd>
+      </div>
+      <div class="props__row">
+        <dt>Coverage</dt>
+        <dd>200+ countries &amp; regions</dd>
+      </div>
+      <div class="props__row">
+        <dt>Top-up</dt>
+        <dd>In-app, no re-install</dd>
+      </div>
+    </dl></movelli-props>
+      </div>
+    </div></movelli-one-column>
+    <movelli-one-column class="layout one-column"><div class="one-column__body">
+      <div class="one-column__a">
+        <movelli-form class="component form">
+  <form class="form__body component__body" method="post" action="/api/form" aria-describedby="form-demo-page-help">
+    <h2 class="component__title" id="form">Form</h2>
+    <p class="form__help form__help--form" id="form-demo-page-help">Everything here is optional unless marked. We read every message, and reply within two working days.</p>
+    <input type="hidden" name="_form" value="demo-page">
+    <div class="form__hp" aria-hidden="true"><label>Leave this field empty<input name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+    <div class="form__fields">
+    <fieldset class="form__field form__group form__group--fields" aria-describedby="f-demo-page-your-details-help">
+      <legend>Your details</legend>
+      <p class="form__help" id="f-demo-page-your-details-help">We only use these to reply (see our <a href="/privacy/">Privacy policy</a>).</p>
+      <div class="form__field">
+      <label for="f-demo-page-name">Your name <span class="form__required" aria-hidden="true">*</span></label>
+      <input id="f-demo-page-name" name="name" required autocomplete="name" type="text">
+    </div>
+      <div class="form__field">
+      <label for="f-demo-page-email">Email <span class="form__required" aria-hidden="true">*</span></label>
+      <input id="f-demo-page-email" name="email" required autocomplete="email" placeholder="you@example.com" maxlength="254" type="email">
+    </div>
+      <div class="form__field">
+      <label for="f-demo-page-phone">Phone</label>
+      <p class="form__help" id="f-demo-page-phone-help">Only if you'd like us to call you back.</p>
+      <input id="f-demo-page-phone" name="phone" autocomplete="tel" aria-describedby="f-demo-page-phone-help" placeholder="+31 6 1234 5678" inputmode="tel" pattern="[+0-9 ()-]{6,20}" type="tel">
+    </div>
+    </fieldset>
+    <div class="form__field">
+      <label for="f-demo-page-topic">Topic</label>
+      <select id="f-demo-page-topic" name="topic" autocomplete="off"><option value="" selected>Choose…</option><option value="Correction">Correction</option><option value="Suggestion">Suggestion</option><option value="Partnership">Partnership</option><option value="Other">Other</option></select>
+    </div>
+    <fieldset class="form__field form__group form__group--options" aria-describedby="f-demo-page-reply-help">
+      <legend>How should we reply?</legend>
+      <p class="form__help" id="f-demo-page-reply-help">We'll only use this for your reply.</p>
+      <div class="form__option">
+        <span class="form__control">
+          <input type="radio" id="f-demo-page-reply-0" name="reply" value="No preference">
+          
+        </span>
+        <label for="f-demo-page-reply-0">No preference</label>
+      </div>
+      <div class="form__option">
+        <span class="form__control">
+          <input type="radio" id="f-demo-page-reply-1" name="reply" value="By email">
+          
+        </span>
+        <label for="f-demo-page-reply-1">By email</label>
+      </div>
+      <div class="form__option">
+        <span class="form__control">
+          <input type="radio" id="f-demo-page-reply-2" name="reply" value="By phone">
+          
+        </span>
+        <label for="f-demo-page-reply-2">By phone</label>
+      </div>
+    </fieldset>
+    <fieldset class="form__field form__group form__group--options" data-required="true">
+      <legend>What are you interested in? <span class="form__required" aria-hidden="true">*</span></legend>
+      <div class="form__option">
+        <span class="form__control">
+          <input type="checkbox" id="f-demo-page-interests-0" name="interests" value="Connectivity">
+          <svg class="form__check-mark" aria-hidden="true"><use href="#icon-check"/></svg>
+        </span>
+        <label for="f-demo-page-interests-0">Connectivity</label>
+      </div>
+      <div class="form__option">
+        <span class="form__control">
+          <input type="checkbox" id="f-demo-page-interests-1" name="interests" value="Money">
+          <svg class="form__check-mark" aria-hidden="true"><use href="#icon-check"/></svg>
+        </span>
+        <label for="f-demo-page-interests-1">Money</label>
+      </div>
+      <div class="form__option">
+        <span class="form__control">
+          <input type="checkbox" id="f-demo-page-interests-2" name="interests" value="Destinations">
+          <svg class="form__check-mark" aria-hidden="true"><use href="#icon-check"/></svg>
+        </span>
+        <label for="f-demo-page-interests-2">Destinations</label>
+      </div>
+    </fieldset>
+    <fieldset class="form__field form__group form__group--fields">
+      <legend>About your trip</legend>
+      <div class="form__field">
+      <label for="f-demo-page-regions">Regions you're heading to</label>
+      <select id="f-demo-page-regions" name="regions" autocomplete="off" multiple size="5"><optgroup label="Asia"><option value="Thailand">Thailand</option><option value="Indonesia">Indonesia</option><option value="Vietnam">Vietnam</option></optgroup><optgroup label="Europe"><option value="Portugal">Portugal</option><option value="Spain">Spain</option><option value="Croatia">Croatia</option></optgroup><option value="Somewhere else">Somewhere else</option></select>
+    </div>
+      <div class="form__field">
+      <label for="f-demo-page-people">Number of people</label>
+      <input id="f-demo-page-people" name="people" autocomplete="off" min="1" max="20" step="1" type="number">
+    </div>
+      <div class="form__field">
+      <label for="f-demo-page-preferred">Preferred date &amp; time</label>
+      <input id="f-demo-page-preferred" name="preferred" autocomplete="off" data-min="now" type="datetime-local">
+    </div>
+    </fieldset>
+    <div class="form__field">
+      <label for="f-demo-page-website">Your website</label>
+      <input id="f-demo-page-website" name="website" autocomplete="off" placeholder="https://example.com" type="url">
+    </div>
+    <div class="form__field">
+      <label for="f-demo-page-reference">Reference</label>
+      <input id="f-demo-page-reference" name="reference" autocomplete="off" readonly type="text" value="MOV-2026-0042">
+    </div>
+    <div class="form__field">
+      <label for="f-demo-page-promo">Promo code</label>
+      <input id="f-demo-page-promo" name="promo" disabled autocomplete="off" placeholder="No codes are running right now" type="text">
+    </div>
+    <div class="form__field">
+      <label for="f-demo-page-message">Message <span class="form__required" aria-hidden="true">*</span></label>
+      <textarea id="f-demo-page-message" name="message" required autocomplete="off" placeholder="What would you like to tell us?" minlength="10" maxlength="2000" rows="6"></textarea>
+    </div>
+    <div class="form__field"><div class="form__option">
+        <span class="form__control">
+          <input type="checkbox" id="f-demo-page-newsletter" name="newsletter" value="yes">
+          <svg class="form__check-mark" aria-hidden="true"><use href="#icon-check"/></svg>
+        </span>
+        <label for="f-demo-page-newsletter">Email me when a new guide is published</label>
+      </div></div>
+    <button type="submit" class="btn">Send message</button>
+    <p class="form__note">Fields marked <span class="form__required" aria-hidden="true">*</span> are required.</p>
+    </div>
+  </form>
+</movelli-form>
+      </div>
+    </div></movelli-one-column>
+    <movelli-one-column class="layout one-column"><div class="one-column__body">
+      <div class="one-column__a">
+        <movelli-prose class="component prose"><div class="prose__body component__body"><h2 id="images-and-video">Images and video</h2></div></movelli-prose>
+        <movelli-figure class="component figure"><figure class="figure__body component__body" style="--figure-ratio: 0.7997">
+    <img src="/_assets/media/demo-image-922.webp" srcset="/_assets/media/demo-image-296.webp 296w, /_assets/media/demo-image-376.webp 376w, /_assets/media/demo-image-461.webp 461w, /_assets/media/demo-image-592.webp 592w, /_assets/media/demo-image-752.webp 752w, /_assets/media/demo-image-922.webp 922w" sizes="auto, (min-width: 30.8rem) 28.8rem, (min-width: 26.0625rem) calc(100vw - 2rem), calc(100vw - 1.5rem)" width="922" height="1153" alt="A person paying for a coffee by holding a contactless card to a card reader" loading="lazy" decoding="async">
+    <figcaption>A figure takes its image &amp; its alt text from the media library, so the alt is written once and translated with everything else. <span class="figure__credit">Movelli demo asset, <a href="https://movelli.com/" target="_blank" rel="noopener noreferrer">movelli.com<span class="sr-only">&nbsp;(opens in a new tab)</span></a></span></figcaption>
+  </figure></movelli-figure>
+        <movelli-video class="component video"><figure class="video__body component__body">
+    <div class="video__frame"><video controls playsinline preload="none" width="1920" height="1080" poster="/_assets/media/demo-clip-poster-800.webp" aria-label="A short demo clip with placeholder captions">
+        <source src="https://firebasestorage.googleapis.com/v0/b/movelli-prod.firebasestorage.app/o/media%2Fvideos%2Fdemo-clip.mp4?alt=media" type="video/mp4">
+        <track kind="captions" srclang="en-US" label="American English" src="/_assets/media/captions/demo-clip.en-US.vtt" default>
+        Your browser can't play embedded video.
+    </video></div>
+    <figcaption>A captioned video figure. The clip, its poster and its captions are all disposable placeholders, and they go before launch with the rest of this page. <span class="video__credit">Placeholder clip, <a href="https://movelli.com/" target="_blank" rel="noopener noreferrer">movelli.com<span class="sr-only">&nbsp;(opens in a new tab)</span></a></span></figcaption>
+  </figure></movelli-video>
+      </div>
+    </div></movelli-one-column>
+    <movelli-wide class="layout wide"><div class="wide__body">
+      <div class="wide__a">
+        <movelli-video class="component video"><figure class="video__body component__body">
+    <div class="video__frame"><video controls playsinline preload="none" width="1920" height="1080" poster="/_assets/media/demo-clip-poster-800.webp" aria-label="A short demo clip with placeholder captions">
+        <source src="https://firebasestorage.googleapis.com/v0/b/movelli-prod.firebasestorage.app/o/media%2Fvideos%2Fdemo-clip.mp4?alt=media" type="video/mp4">
+        <track kind="captions" srclang="en-US" label="American English" src="/_assets/media/captions/demo-clip.en-US.vtt" default>
+        Your browser can't play embedded video.
+    </video></div>
+    <figcaption>The same video in the wide layout. Its caption keeps its own line length. <span class="video__credit">Photo: Movelli demo asset</span></figcaption>
+  </figure></movelli-video>
+      </div>
+    </div></movelli-wide>
+    <movelli-one-column class="layout one-column"><div class="one-column__body">
+      <div class="one-column__a">
+        <movelli-prose class="component prose"><div class="prose__body component__body"><h2 id="banners">Banners</h2><p>A banner is a band with a picture behind it: a real <code>&lt;img&gt;</code> from the media library, with alt text and its renditions. Its title, text and any button or form are components in its <strong>slot</strong>, set to the inverse look for the dark overlay. Its shape is a variant, named for the width it is made for. In the full-width layout, with the variant <code>full</code>, the photo runs edge to edge with square corners: 4/3 on a phone, 16/7, then 21/9 once the banner is 60rem wide. Its components sit in a box of its <code>contentWidth</code> (the reading width, or here the wide one), centred at the foot of the band.</p></div></movelli-prose>
+      </div>
+    </div></movelli-one-column>
+    <movelli-full-width class="layout full-width"><div class="full-width__body">
+      <div class="full-width__a">
+        <movelli-banner class="component banner banner--scrim banner--content-wide component-variant--full">
+    <div class="banner__body component__body">
+    <picture class="banner__picture">
+      <source media="(min-width: 60rem)" srcset="/_assets/media/global-connectivity-for-digital-nomads-960x411.webp 960w, /_assets/media/global-connectivity-for-digital-nomads-1344x576.webp 1344w, /_assets/media/global-connectivity-for-digital-nomads-1920x823.webp 1920w, /_assets/media/global-connectivity-for-digital-nomads-2400x1029.webp 2400w" sizes="(min-width: 60rem) 100vw" width="1344" height="576">
+      <source media="(min-width: 34rem)" srcset="/_assets/media/global-connectivity-for-digital-nomads-544x238.webp 544w, /_assets/media/global-connectivity-for-digital-nomads-762x333.webp 762w, /_assets/media/global-connectivity-for-digital-nomads-960x420.webp 960w, /_assets/media/global-connectivity-for-digital-nomads-1088x476.webp 1088w, /_assets/media/global-connectivity-for-digital-nomads-1524x667.webp 1524w, /_assets/media/global-connectivity-for-digital-nomads-1920x840.webp 1920w" sizes="(min-width: 34rem) 100vw" width="1524" height="667">
+      <img class="banner__img" src="/_assets/media/global-connectivity-for-digital-nomads-1088x816.webp" srcset="/_assets/media/global-connectivity-for-digital-nomads-320x240.webp 320w, /_assets/media/global-connectivity-for-digital-nomads-448x336.webp 448w, /_assets/media/global-connectivity-for-digital-nomads-544x408.webp 544w, /_assets/media/global-connectivity-for-digital-nomads-640x480.webp 640w, /_assets/media/global-connectivity-for-digital-nomads-896x672.webp 896w, /_assets/media/global-connectivity-for-digital-nomads-1088x816.webp 1088w" sizes="auto, 100vw" width="1088" height="816" alt="A woman seen from behind working at a laptop at a table on a sunny terrace, with a garden and a swimming pool behind her" loading="lazy" decoding="async">
+    </picture>
+      <div class="banner__content">
+        <div class="banner__slot">
+          <movelli-prose class="component prose component-variant--inverse"><div class="prose__body component__body"><h2 id="everything-you-need-before-you-land">Everything you need, before you land</h2><p>Visa rules, money and connectivity: the facts that change a trip, checked.</p></div></movelli-prose>
+          <movelli-cta class="component cta component-variant--inverse"><a class="btn" href="/about/">A button in the banner</a></movelli-cta>
+        </div>
+      </div>
+    <span class="banner__credit">Photo: Unsplash</span>
+    </div>
+  </movelli-banner>
+      </div>
+    </div></movelli-full-width>
+    <movelli-one-column class="layout one-column"><div class="one-column__body">
+      <div class="one-column__a">
+        <movelli-prose class="component prose"><div class="prose__body component__body"><p>The same component in the wide layout, with the variant <code>wide</code>. Its corners are round, since it stops short of the screen edges.</p></div></movelli-prose>
+      </div>
+    </div></movelli-one-column>
+    <movelli-wide class="layout wide"><div class="wide__body">
+      <div class="wide__a">
+        <movelli-banner class="component banner banner--scrim component-variant--wide">
+    <div class="banner__body component__body">
+    <picture class="banner__picture">
+      <source media="(min-width: 36rem)" srcset="/_assets/media/global-connectivity-for-digital-nomads-576x252.webp 576w, /_assets/media/global-connectivity-for-digital-nomads-784x343.webp 784w, /_assets/media/global-connectivity-for-digital-nomads-1152x504.webp 1152w, /_assets/media/global-connectivity-for-digital-nomads-1280x560.webp 1280w, /_assets/media/global-connectivity-for-digital-nomads-1568x686.webp 1568w, /_assets/media/global-connectivity-for-digital-nomads-2400x1050.webp 2400w" sizes="(min-width: 84rem) 80rem, (min-width: 75.0625rem) calc(100vw - 4rem), (min-width: 39.0625rem) calc(100vw - 3rem), (min-width: 36rem) calc(100vw - 2rem)" width="1568" height="686">
+      <img class="banner__img" src="/_assets/media/global-connectivity-for-digital-nomads-1088x816.webp" srcset="/_assets/media/global-connectivity-for-digital-nomads-296x222.webp 296w, /_assets/media/global-connectivity-for-digital-nomads-376x282.webp 376w, /_assets/media/global-connectivity-for-digital-nomads-592x444.webp 592w, /_assets/media/global-connectivity-for-digital-nomads-752x564.webp 752w, /_assets/media/global-connectivity-for-digital-nomads-1088x816.webp 1088w" sizes="auto, (min-width: 26.0625rem) calc(100vw - 2rem), calc(100vw - 1.5rem)" width="1088" height="816" alt="A woman seen from behind working at a laptop at a table on a sunny terrace, with a garden and a swimming pool behind her" loading="lazy" decoding="async">
+    </picture>
+      <div class="banner__content">
+        <div class="banner__slot">
+          <movelli-prose class="component prose component-variant--inverse"><div class="prose__body component__body"><h2 id="in-the-wide-column">In the wide column</h2><p>The variant wide: 4/3 on a phone, then 16/7.</p></div></movelli-prose>
+        </div>
+      </div>
+    <span class="banner__credit">Photo: <a href="https://unsplash.com/@ethnoza" target="_blank" rel="noopener noreferrer">Aleh Tsikhanau<span class="sr-only">&nbsp;(opens in a new tab)</span></a></span>
+    </div>
+  </movelli-banner>
+      </div>
+    </div></movelli-wide>
+    <movelli-one-column class="layout one-column"><div class="one-column__body">
+      <div class="one-column__a">
+        <movelli-banner class="component banner banner--scrim">
+    <div class="banner__body component__body">
+    <picture class="banner__picture">
+      <source media="(min-width: 36rem)" srcset="/_assets/media/global-connectivity-for-digital-nomads-576x324.webp 576w, /_assets/media/global-connectivity-for-digital-nomads-800x450.webp 800w, /_assets/media/global-connectivity-for-digital-nomads-1152x648.webp 1152w, /_assets/media/global-connectivity-for-digital-nomads-1600x900.webp 1600w" sizes="(min-width: 53rem) 50rem, (min-width: 39.0625rem) calc(100vw - 3rem), (min-width: 36rem) calc(100vw - 2rem)" width="1600" height="900">
+      <img class="banner__img" src="/_assets/media/global-connectivity-for-digital-nomads-1088x816.webp" srcset="/_assets/media/global-connectivity-for-digital-nomads-296x222.webp 296w, /_assets/media/global-connectivity-for-digital-nomads-376x282.webp 376w, /_assets/media/global-connectivity-for-digital-nomads-592x444.webp 592w, /_assets/media/global-connectivity-for-digital-nomads-752x564.webp 752w, /_assets/media/global-connectivity-for-digital-nomads-1088x816.webp 1088w" sizes="auto, (min-width: 26.0625rem) calc(100vw - 2rem), calc(100vw - 1.5rem)" width="1088" height="816" alt="A woman seen from behind working at a laptop at a table on a sunny terrace, with a garden and a swimming pool behind her" loading="lazy" decoding="async">
+    </picture>
+      <div class="banner__content">
+        <div class="banner__slot">
+          <movelli-prose class="component prose component-variant--inverse"><div class="prose__body component__body"><h2 id="in-the-reading-column">In the reading column</h2><p>No variant: 4/3 on a phone, then 16/9.</p></div></movelli-prose>
+        </div>
+      </div>
+    <span class="banner__credit">Photo: Unsplash</span>
+    </div>
+  </movelli-banner>
+      </div>
+    </div></movelli-one-column>
+    <movelli-one-column class="layout one-column"><div class="one-column__body">
+      <div class="one-column__a">
+        <movelli-prose class="component prose"><div class="prose__body component__body"><p>The same band can carry a looping silent clip instead of a still. It is always autoplay, muted and controls-less (that is what makes it a background rather than a video you play), and under <code>prefers-reduced-motion</code> the clip is hidden and its poster paints in its place, with no JavaScript involved.</p></div></movelli-prose>
+      </div>
+    </div></movelli-one-column>
+    <movelli-wide class="layout wide"><div class="wide__body">
+      <div class="wide__a">
+        <movelli-banner class="component banner banner--scrim component-variant--wide" style="--band-poster:url('/_assets/media/demo-clip-poster-800.webp')">
+    <div class="banner__body component__body">
+    <video class="banner__img" role="img" aria-label="A looping background clip" autoplay muted loop playsinline preload="none" poster="/_assets/media/demo-clip-poster-800.webp">
+      <source data-src="https://firebasestorage.googleapis.com/v0/b/movelli-prod.firebasestorage.app/o/media%2Fvideos%2Fdemo-clip.mp4?alt=media" type="video/mp4">
+    </video>
+      <div class="banner__content">
+        <div class="banner__slot">
+          <movelli-prose class="component prose component-variant--inverse"><div class="prose__body component__body"><h2 id="a-band-with-a-moving-background">A band with a moving background</h2><p>A looping, silent clip, still under reduced motion.</p></div></movelli-prose>
+        </div>
+      </div>
+    <span class="banner__credit">Placeholder clip</span>
+    </div>
+  </movelli-banner>
+      </div>
+    </div></movelli-wide>
+    <movelli-one-column class="layout one-column"><div class="one-column__body">
+      <div class="one-column__a">
+        <movelli-prose class="component prose"><div class="prose__body component__body"><h2 id="layouts">Layouts</h2><p>A page is a stack of <strong>layouts</strong>. Each layout is a web component with its own markup and its own CSS (its slots, its widths, its gaps and where it changes), and the components in each of its slots stack. Everything below is a layout from the layout catalog, and the space above each one is the layout's own.</p></div></movelli-prose>
+        <movelli-prose class="component prose"><div class="prose__body component__body"><h3>Two columns</h3><p>Two equal halves at the wide width, side by side from a 62rem window, where each half is just wider than a paragraph's minimum width, with a spacious gap between them; stacked below that, the first first.</p></div></movelli-prose>
+      </div>
+    </div></movelli-one-column>
+    <movelli-two-column class="layout two-column"><div class="two-column__body">
+      <div class="two-column__a">
+        <movelli-list class="component list"><div class="list__body component__body"><h3 class="component__title" id="what-works">What works</h3><ul><li><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg>Installed before you fly, working the moment you land, with no queue and no kiosk.</li><li><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg>No passport photocopy at a kiosk.</li><li><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg>Keeps your home number live for two-factor codes.</li></ul></div></movelli-list>
+      </div>
+      <div class="two-column__b">
+        <movelli-list class="component list"><div class="list__body component__body"><h3 class="component__title" id="what-doesn-t">What doesn't</h3><ul><li><svg class="icon" aria-hidden="true"><use href="#icon-close"/></svg>Usually dearer per gigabyte than a local SIM.</li><li><svg class="icon" aria-hidden="true"><use href="#icon-close"/></svg>Data only, with no local number for taxis or deliveries.</li><li><svg class="icon" aria-hidden="true"><use href="#icon-close"/></svg>Older phones cannot use it at all.</li></ul></div></movelli-list>
+      </div>
+    </div></movelli-two-column>
+    <movelli-two-column class="layout two-column"><div class="two-column__body">
+      <div class="two-column__a">
+        <movelli-prose class="component prose"><div class="prose__body component__body"><p>Long text in one column and an image in the other. The columns are one height, set by the taller of the two; the text decides it here. The image keeps its own aspect ratio and sits at the top of its column, because a figure does not grow into the spare height.</p><p>A second paragraph, so the text runs well past the image on a wide screen. Placing the image differently in its taller column, in the middle say, would be a variant of the layout, not a setting on the image or on this instance.</p><p>A third, because a real guide's text is rarely as short as its picture. Most pages that put text beside an image will look like this: more words than picture.</p><p>A fourth, to make the difference plain at every width where the two sit side by side, from a 62rem window up.</p><p>And a fifth. Below 62rem the two stack, the text first, and the question of spare height does not come up.</p></div></movelli-prose>
+      </div>
+      <div class="two-column__b">
+        <movelli-figure class="component figure"><figure class="figure__body component__body" style="--figure-ratio: 1.4995">
+    <img src="/_assets/media/global-connectivity-for-digital-nomads-1600.webp" srcset="/_assets/media/global-connectivity-for-digital-nomads-296.webp 296w, /_assets/media/global-connectivity-for-digital-nomads-384.webp 384w, /_assets/media/global-connectivity-for-digital-nomads-592.webp 592w, /_assets/media/global-connectivity-for-digital-nomads-800.webp 800w, /_assets/media/global-connectivity-for-digital-nomads-1152.webp 1152w, /_assets/media/global-connectivity-for-digital-nomads-1600.webp 1600w" sizes="auto, (min-width: 63.0625rem) 24rem, (min-width: 53rem) 50rem, (min-width: 39.0625rem) calc(100vw - 3rem), (min-width: 26.0625rem) calc(100vw - 2rem), calc(100vw - 1.5rem)" width="1600" height="1067" alt="A woman seen from behind working at a laptop at a table on a sunny terrace, with a garden and a swimming pool behind her" loading="lazy" decoding="async">
+    <figcaption>The figure keeps its ratio; the column below it stays empty. <span class="figure__credit">Photo: <a href="https://unsplash.com/@ethnoza" target="_blank" rel="noopener noreferrer">Aleh Tsikhanau<span class="sr-only">&nbsp;(opens in a new tab)</span></a></span></figcaption>
+  </figure></movelli-figure>
+      </div>
+    </div></movelli-two-column>
+    <movelli-two-thirds-left class="layout two-thirds-left"><div class="two-thirds-left__body">
+      <div class="two-thirds-left__a">
+        <movelli-prose class="component prose"><div class="prose__body component__body"><p>Two thirds left: the first slot is twice as wide as the second. Text or a table goes in the wide part, a smaller image beside it. Below 62rem the two stack, the first first.</p><p>A second paragraph, so the text runs past the image on a wide screen.</p></div></movelli-prose>
+      </div>
+      <div class="two-thirds-left__b">
+        <movelli-figure class="component figure"><figure class="figure__body component__body" style="--figure-ratio: 1.4995">
+    <img src="/_assets/media/global-connectivity-for-digital-nomads-1600.webp" srcset="/_assets/media/global-connectivity-for-digital-nomads-256.webp 256w, /_assets/media/global-connectivity-for-digital-nomads-296.webp 296w, /_assets/media/global-connectivity-for-digital-nomads-376.webp 376w, /_assets/media/global-connectivity-for-digital-nomads-592.webp 592w, /_assets/media/global-connectivity-for-digital-nomads-800.webp 800w, /_assets/media/global-connectivity-for-digital-nomads-1152.webp 1152w, /_assets/media/global-connectivity-for-digital-nomads-1600.webp 1600w" sizes="auto, (min-width: 63.0625rem) 16rem, (min-width: 53rem) 50rem, (min-width: 39.0625rem) calc(100vw - 3rem), (min-width: 26.0625rem) calc(100vw - 2rem), calc(100vw - 1.5rem)" width="1600" height="1067" alt="A woman seen from behind working at a laptop at a table on a sunny terrace, with a garden and a swimming pool behind her" loading="lazy" decoding="async">
+    <figcaption>The narrow part holds the figure. <span class="figure__credit">Photo: <a href="https://unsplash.com/@ethnoza" target="_blank" rel="noopener noreferrer">Aleh Tsikhanau<span class="sr-only">&nbsp;(opens in a new tab)</span></a></span></figcaption>
+  </figure></movelli-figure>
+      </div>
+    </div></movelli-two-thirds-left>
+    <movelli-two-thirds-right class="layout two-thirds-right"><div class="two-thirds-right__body">
+      <div class="two-thirds-right__a">
+        <movelli-figure class="component figure"><figure class="figure__body component__body" style="--figure-ratio: 1.4995">
+    <img src="/_assets/media/global-connectivity-for-digital-nomads-1600.webp" srcset="/_assets/media/global-connectivity-for-digital-nomads-256.webp 256w, /_assets/media/global-connectivity-for-digital-nomads-296.webp 296w, /_assets/media/global-connectivity-for-digital-nomads-376.webp 376w, /_assets/media/global-connectivity-for-digital-nomads-592.webp 592w, /_assets/media/global-connectivity-for-digital-nomads-800.webp 800w, /_assets/media/global-connectivity-for-digital-nomads-1152.webp 1152w, /_assets/media/global-connectivity-for-digital-nomads-1600.webp 1600w" sizes="auto, (min-width: 63.0625rem) 16rem, (min-width: 53rem) 50rem, (min-width: 39.0625rem) calc(100vw - 3rem), (min-width: 26.0625rem) calc(100vw - 2rem), calc(100vw - 1.5rem)" width="1600" height="1067" alt="A woman seen from behind working at a laptop at a table on a sunny terrace, with a garden and a swimming pool behind her" loading="lazy" decoding="async">
+    <figcaption>The narrow part holds the figure. <span class="figure__credit">Photo: <a href="https://unsplash.com/@ethnoza" target="_blank" rel="noopener noreferrer">Aleh Tsikhanau<span class="sr-only">&nbsp;(opens in a new tab)</span></a></span></figcaption>
+  </figure></movelli-figure>
+      </div>
+      <div class="two-thirds-right__b">
+        <movelli-prose class="component prose"><div class="prose__body component__body"><p>Two thirds right: the second slot is twice as wide as the first. The same layout with the sides swapped, so a page can vary where its images sit. The slots keep their order: the narrow one is still first when stacked.</p><p>A second paragraph, so the text runs past the image on a wide screen.</p></div></movelli-prose>
+      </div>
+    </div></movelli-two-thirds-right>
+    <movelli-one-column class="layout one-column"><div class="one-column__body">
+      <div class="one-column__a">
+        <movelli-prose class="component prose"><div class="prose__body component__body"><p>The page ends on body text, which is how most pages end, so the gap from here down to the secondary content below is the one worth tuning. Everything above is spaced by the container, not by the components themselves.</p></div></movelli-prose>
+      </div>
+    </div></movelli-one-column>
+    <movelli-one-column class="layout one-column"><div class="one-column__body">
+      <div class="one-column__a">
+        <movelli-footnotes class="component footnotes"><ol class="footnotes__body component__body" role="list">
+      <li class="footnotes__item" id="note-1" role="doc-endnote"><sup>1</sup>A footnote holds one source or aside, and can hold <a href="https://example.com/source" target="_blank" rel="noopener noreferrer">a link to another website<svg class="icon icon--inline" aria-hidden="true"><use href="#icon-external"/></svg><span class="sr-only">&nbsp;(opens in a new tab)</span></a>.<a class="footnotes__back" href="#ref-1" role="doc-backlink" aria-label="Back to the text" title="Back to the text">↩</a></li>
+    </ol></movelli-footnotes>
+      </div>
+    </div></movelli-one-column>
+    </article>
+    </div>
+  </main>
+
+  <aside class="secondary-content" aria-labelledby="secondary-content-title">
+    <movelli-suggestions class="layout suggestions"><div class="suggestions__body">
+      <div class="suggestions__a">
+        <movelli-heading class="component heading component-variant--centered"><h2 class="heading__body component__title" id="secondary-content-title">Let us guide you</h2></movelli-heading>
+        <movelli-intro class="component intro component-variant--centered"><div class="intro__body component__body"><p>Here are some of the top guides about Demo Category that you can find on Movelli</p></div></movelli-intro>
+      </div>
+      <div class="suggestions__b" role="list">
+        <movelli-card class="component card" role="listitem" data-hero-image="{&quot;srcset&quot;:&quot;/_assets/media/global-connectivity-for-digital-nomads-296x222.webp 296w, /_assets/media/global-connectivity-for-digital-nomads-376x282.webp 376w, /_assets/media/global-connectivity-for-digital-nomads-592x444.webp 592w, /_assets/media/global-connectivity-for-digital-nomads-752x564.webp 752w, /_assets/media/global-connectivity-for-digital-nomads-1088x816.webp 1088w&quot;,&quot;sizes&quot;:&quot;(min-width: 26.0625rem) calc(100vw - 2rem), calc(100vw - 1.5rem)&quot;,&quot;sources&quot;:[{&quot;media&quot;:&quot;(min-width: 36rem)&quot;,&quot;srcset&quot;:&quot;/_assets/media/global-connectivity-for-digital-nomads-576x252.webp 576w, /_assets/media/global-connectivity-for-digital-nomads-784x343.webp 784w, /_assets/media/global-connectivity-for-digital-nomads-1152x504.webp 1152w, /_assets/media/global-connectivity-for-digital-nomads-1280x560.webp 1280w, /_assets/media/global-connectivity-for-digital-nomads-1568x686.webp 1568w, /_assets/media/global-connectivity-for-digital-nomads-2400x1050.webp 2400w&quot;,&quot;sizes&quot;:&quot;(min-width: 84rem) 80rem, (min-width: 75.0625rem) calc(100vw - 4rem), (min-width: 39.0625rem) calc(100vw - 3rem), (min-width: 36rem) calc(100vw - 2rem)&quot;}]}">
+      <a class="card__body component__body" href="/global-connectivity-guide-digital-nomads/">
+        <span class="card__thumb" aria-hidden="true">
+          <img class="card__img" src="/_assets/media/global-connectivity-for-digital-nomads-1600.webp" srcset="/_assets/media/global-connectivity-for-digital-nomads-800.webp 800w, /_assets/media/global-connectivity-for-digital-nomads-1600.webp 1600w" sizes="auto" width="1600" height="1067" alt="" loading="lazy" decoding="async"><span class="card__tag">Connectivity &amp; Tech</span>
+        </span>
+        <span class="card__text">
+          <span class="card__title is-underlined">Global Connectivity for Digital Nomads: A Complete Guide</span>
+          <span class="card__summary">How to stay online in any country: eSIMs, VPNs, banking-safe connections, the travel hardware to carry and what to do when the network fails.</span>
+        </span>
+      </a>
+    </movelli-card>
+      </div>
+      <div class="suggestions__c">
+        
+    <div class="secondary-content__body content assistant-only" id="secondary-content-body"></div>
+    <footer class="secondary-content__footer assistant-only" id="secondary-content-footer"></footer>
+
+      </div>
+    </div></movelli-suggestions>
+  </aside>
+  <footer class="app-footer">
+    
+    <nav id="nav-menu" class="nav-menu" aria-labelledby="nav-menu-title" tabindex="-1">
+      <h2 id="nav-menu-title" class="sr-only">Menu</h2>
+      <ul class="nav-menu__list"><li class="nav-menu__item"><a href="/categories/demo-category/">Demo Category</a></li><li class="nav-menu__item"><a href="/about/">About</a></li><li class="nav-menu__item"><a href="/privacy/">Privacy</a></li></ul>
+    </nav>
+  </footer>
+  </div>
+
+
+
+  <div class="app-toast" id="app-toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  
+  <script type="module" src="/_assets/scripts/main.f8dbaa93.js"></script>
+  <script>addEventListener('load',()=>{import('/_assets/scripts/form.f5eaca80.js')});</script>
+  
+</body>
+</html>

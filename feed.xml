@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Movelli</title>
+  <!-- [owner 2026-09-17] site_description at the PRIMARY locale: the feed is ONE file for a
+       per-locale site, the same shape (and the same answer) as the forms manifest. copy() defaults
+       to the primary, so this is the default rather than a choice made here. -->
+  <subtitle>Discover practical guides and comparisons for digital nomads. Compare top eSIMs, VPNs, borderless banking, and nomad insurance on Movelli.</subtitle>
+  <link href="https://movelli.com/"/>
+  <link rel="self" href="https://movelli.com/feed.xml"/>
+  <id>https://movelli.com/</id>
+  <updated>2026-10-11T00:00:00Z</updated>
+  <author><name>Movelli</name></author>
+  <entry>
+    <title>Global Connectivity for Digital Nomads: A Complete Guide</title>
+    <link href="https://movelli.com/global-connectivity-guide-digital-nomads/"/>
+    <id>https://movelli.com/global-connectivity-guide-digital-nomads/</id>
+    <updated>2026-10-11T00:00:00Z</updated>
+    <published>2026-10-11T00:00:00Z</published>
+    <summary>How to stay online in any country: eSIMs, VPNs, banking-safe connections, the travel hardware to carry and what to do when the network fails.</summary>
+  </entry>
+  <entry>
+    <title>This is a demo page that contains all components</title>
+    <link href="https://movelli.com/demo-page/"/>
+    <id>https://movelli.com/demo-page/</id>
+    <updated>2026-10-07T00:00:00Z</updated>
+    <published>2026-10-07T00:00:00Z</published>
+    <summary>This is a demo page.</summary>
+  </entry>
+</feed>
